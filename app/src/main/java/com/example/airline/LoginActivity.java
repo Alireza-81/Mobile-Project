@@ -1,4 +1,4 @@
-package com.example.xo;
+package com.example.airline;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -37,7 +37,9 @@ public class LoginActivity extends AppCompatActivity {
 
         if (username.equals("admin") && password.equals("admin")) {
             // Login success
+
             Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show();
+            launchActivityBasedOnSelection();
 
         } else {
             // Login failed
@@ -45,6 +47,25 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+
+    private void launchActivityBasedOnSelection() {
+        int selectedId = radioGroupButtons.getCheckedRadioButtonId();
+
+        if (selectedId == R.id.radioButton1) {
+            Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(LoginActivity.this, TicketsActivity.class);
+            startActivity(intent);
+        } else if (selectedId == R.id.radioButton2) {
+            Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(LoginActivity.this, ManagementActivity.class);
+            startActivity(intent);
+        } else {
+            Toast.makeText(this, "Please select an option", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+
+    }
 
 
 
