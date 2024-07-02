@@ -71,17 +71,17 @@ public class Flights {
         return OperationCode.WRONG_VALUE_CAPACITY;
     }
 
-    private List<Flight> getCustomerPreviousFlights(Customer customer){
-        List<Flight> res = new ArrayList<>();
-        for (Flight flight : flightList){
-            if(flight.getDateTime().getYear() == dateTime.getYear()
-                    && flight.getDateTime().getMonth() == dateTime.getMonth()
-                    && flight.getDateTime().getDayOfMonth() == dateTime.getDayOfMonth()){
-                res.add(flight);
-            }
-
-        }
-        return res;
-    }
+//    private List<Flight> getCustomerPreviousFlights(Customer customer){
+//        List<Flight> res = new ArrayList<>();
+//        for (Flight flight : flightList){
+//            if(flight.getDateTime().getYear() == dateTime.getYear()
+//                    && flight.getDateTime().getMonth() == dateTime.getMonth()
+//                    && flight.getDateTime().getDayOfMonth() == dateTime.getDayOfMonth()){
+//                res.add(flight);
+//            }
+//
+//        }
+//        return res;
+//    }
 
 }

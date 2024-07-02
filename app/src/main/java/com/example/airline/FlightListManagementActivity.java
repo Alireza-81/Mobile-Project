@@ -4,6 +4,8 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,13 +23,14 @@ public class FlightListManagementActivity extends AppCompatActivity {
         recyclerViewFlights = findViewById(R.id.recyclerViewFlights);
         recyclerViewFlights.setLayoutManager(new LinearLayoutManager(this));
 
-        // Initialize flight data (this would typically come from a database or API)
         flightList = new ArrayList<>();
-        flightList.add(new Flight("AA123", 180, "Non-stop, Economy Class"));
-        flightList.add(new Flight("BA456", 200, "One-stop, Business Class"));
-        flightList.add(new Flight("CA789", 150, "Non-stop, First Class"));
+        Airplane airplane = new Airplane("meow", "Boeing 747", null, 10, 10);
+        for (int i = 0; i < 20; i++) {flightList.add(new Flight(i, CityEnum.MASHHAD, CityEnum.TEHRAN, LocalDateTime.now(), airplane, new ArrayList<>(), new ArrayList<>(), 180, 500));
+            flightList.add(new Flight(i + 1, CityEnum.TABRIZ, CityEnum.TEHRAN, LocalDateTime.now(), airplane, new ArrayList<>(), new ArrayList<>(), 180, 500));
+            flightList.add(new Flight(i + 2, CityEnum.AHVAZ, CityEnum.TEHRAN, LocalDateTime.now(), airplane, new ArrayList<>(), new ArrayList<>(), 180, 500));
+        }
 
-        flightAdapter = new FlightAdapter(flightList);
+        flightAdapter = new FlightManagementAdapter(flightList);
         recyclerViewFlights.setAdapter(flightAdapter);
     }
 }

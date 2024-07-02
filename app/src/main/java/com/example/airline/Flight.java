@@ -6,6 +6,8 @@ import java.util.List;
 
 public class Flight {
 //    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+
+    private int flightNumber;
     private CityEnum origin;
     private CityEnum destination;
     private LocalDateTime dateTime;
@@ -17,7 +19,8 @@ public class Flight {
 
 
 
-    public Flight(CityEnum origin, CityEnum destination, LocalDateTime dataTime, Airplane airplane, List<Staff> staffList, List<Customer> customerList, int remainingCapacity, int price) {
+    public Flight(int flightNumber, CityEnum origin, CityEnum destination, LocalDateTime dataTime, Airplane airplane, List<Staff> staffList, List<Customer> customerList, int remainingCapacity, int price) {
+        this.flightNumber = flightNumber;
         this.origin = origin;
         this.destination = destination;
         this.dateTime = dataTime;
