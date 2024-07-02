@@ -24,10 +24,13 @@ public class EditFlightActivity extends AppCompatActivity {
     private TextView textViewCapacityValue;
     private Button buttonDecreaseCapacity, buttonIncreaseCapacity;
 
+    public static int flightID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_flight);
+
+        flightID = getIntent().getIntExtra("flightID", -1);
 
         spinnerOrigin = findViewById(R.id.spinnerOrigin);
         spinnerDestination = findViewById(R.id.spinnerDestination);
