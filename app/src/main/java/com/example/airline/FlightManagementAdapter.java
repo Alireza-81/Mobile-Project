@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,15 +29,12 @@ public class FlightManagementAdapter extends RecyclerView.Adapter<FlightManageme
     @Override
     public void onBindViewHolder(@NonNull FlightViewHolder holder, int position) {
         Flight flight = flightList.get(position);
+
+        // Bind initial visible details
         holder.originDestination.setText(flight.getOrigin() + " - " + flight.getDestination());
         holder.dateTime.setText(flight.getDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
 
-        holder.expandButton.setOnClickListener(v -> {
-            boolean isVisible = holder.detailsLayout.getVisibility() == View.VISIBLE;
-            holder.detailsLayout.setVisibility(isVisible ? View.GONE : View.VISIBLE);
-            holder.expandButton.setText(isVisible ? "Show More" : "Show Less");
-        });
-
+        // Bind additional details (hidden by default)
         holder.flightNumber.setText("Flight Number: " + flight.getDestination());
         holder.airplane.setText("Airplane: " + flight.getAirplane().getModel());
         holder.staffList.setText("Staff List: " + flight.getStaffList().toString());
@@ -44,9 +42,18 @@ public class FlightManagementAdapter extends RecyclerView.Adapter<FlightManageme
         holder.remainingCapacity.setText("Remaining Capacity: " + flight.getRemainingCapacity());
         holder.price.setText("Price: " + flight.getPrice());
 
+        // Toggle visibility of details on button click
+        holder.expandButton.setOnClickListener(v -> {
+            boolean isVisible = holder.detailsLayout.getVisibility() == View.VISIBLE;
+            holder.detailsLayout.setVisibility(isVisible ? View.GONE : View.VISIBLE);
+            holder.expandButton.setText(isVisible ? "Show More" : "Show Less");
+        });
+
+        // Handle edit and delete button clicks (implement your logic)
         holder.editButton.setOnClickListener(v -> {
             // Handle edit action
         });
+
         holder.deleteButton.setOnClickListener(v -> {
             // Handle delete action
         });
