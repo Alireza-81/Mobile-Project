@@ -37,7 +37,11 @@ dependencies {
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.firebase.crashlytics.buildtools)
+<<<<<<< HEAD
     implementation(libs.constraintlayout)
+=======
+    implementation(libs.car.ui.lib)
+>>>>>>> e79767630b8c58e09b6d51197f1bc27169a9aad4
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

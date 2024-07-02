@@ -6,7 +6,11 @@ espressoCore = "3.5.1"
 appcompat = "1.6.1"
 material = "1.11.0"
 firebaseCrashlyticsBuildtools = "3.0.2"
+<<<<<<< HEAD
 constraintlayout = "2.1.4"
+=======
+carUiLib = "2.6.0"
+>>>>>>> e79767630b8c58e09b6d51197f1bc27169a9aad4
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -15,7 +19,11 @@ espresso-core = { group = "androidx.test.espresso", name = "espresso-core", vers
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 firebase-crashlytics-buildtools = { group = "com.google.firebase", name = "firebase-crashlytics-buildtools", version.ref = "firebaseCrashlyticsBuildtools" }
+<<<<<<< HEAD
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+=======
+car-ui-lib = { group = "com.android.car.ui", name = "car-ui-lib", version.ref = "carUiLib" }
+>>>>>>> e79767630b8c58e09b6d51197f1bc27169a9aad4
 
 [plugins]
 androidApplication = { id = "com.android.application", version = "8.2.2" }

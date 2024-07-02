@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditFlightActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSaveChanges"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Origin"
+                android:textSize="16sp"
+                android:paddingTop="8dp"
+                android:fontFamily="sans-serif-medium" />
+
+            <Spinner
+                android:id="@+id/spinnerOrigin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Destination"
+                android:textSize="16sp"
+                android:paddingTop="8dp"
+                android:fontFamily="sans-serif-medium" />
+
+            <Spinner
+                android:id="@+id/spinnerDestination"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date and Time"
+                android:textSize="16sp"
+                android:paddingTop="8dp"
+                android:fontFamily="sans-serif-medium" />
+
+            <EditText
+                android:id="@+id/editTextDateTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="YYYY-MM-DDTHH:MM"
+                android:inputType="datetime"
+                android:fontFamily="sans-serif" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Price"
+                android:textSize="16sp"
+                android:paddingTop="8dp"
+                android:fontFamily="sans-serif-medium" />
+
+            <TextView
+                android:id="@+id/textViewPriceValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:paddingTop="8dp"
+                android:fontFamily="sans-serif-medium" />
+
+            <SeekBar
+                android:id="@+id/seekBarPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="10000" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Remaining Capacity"
+                android:textSize="16sp"
+                android:paddingTop="8dp"
+                android:fontFamily="sans-serif-medium" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:paddingTop="8dp">
+
+                <Button
+                    android:id="@+id/buttonDecreaseCapacity"
+                    android:layout_width="57dp"
+                    android:layout_height="wrap_content"
+                    android:text="-"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/textViewCapacityValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:text="0"
+                    android:textSize="18sp"
+                    android:gravity="center"
+                    android:fontFamily="sans-serif-medium" />
+
+                <Button
+                    android:id="@+id/buttonIncreaseCapacity"
+                    android:layout_width="56dp"
+                    android:layout_height="wrap_content"
+                    android:text="+"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Airplane Name"
+                android:textSize="16sp"
+                android:paddingTop="8dp"
+                android:fontFamily="sans-serif-medium" />
+
+            <EditText
+                android:id="@+id/editTextAirplaneName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:fontFamily="sans-serif" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Flight Number"
+                android:textSize="16sp"
+                android:paddingTop="8dp"
+                android:fontFamily="sans-serif-medium" />
+
+            <EditText
+                android:id="@+id/editTextFlightNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:fontFamily="sans-serif" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Staff to Add"
+                android:textSize="16sp"
+                android:paddingTop="8dp"
+                android:fontFamily="sans-serif-medium" />
+
+            <EditText
+                android:id="@+id/editTextStaffToAdd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Search Staff to Add"
+                android:fontFamily="sans-serif" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Staff to Remove"
+                android:textSize="16sp"
+                android:paddingTop="8dp"
+                android:fontFamily="sans-serif-medium" />
+
+            <EditText
+                android:id="@+id/editTextStaffToRemove"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Search Staff to Remove"
+                android:fontFamily="sans-serif" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Customers to Add"
+                android:textSize="16sp"
+                android:paddingTop="8dp"
+                android:fontFamily="sans-serif-medium" />
+
+            <EditText
+                android:id="@+id/editTextCustomersToAdd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Search Customers to Add"
+                android:fontFamily="sans-serif" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Customers to Remove"
+                android:textSize="16sp"
+                android:paddingTop="8dp"
+                android:fontFamily="sans-serif-medium" />
+
+            <EditText
+                android:id="@+id/editTextCustomersToRemove"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Search Customers to Remove"
+                android:fontFamily="sans-serif" />
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/buttonSaveChanges"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save Changes"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/primary_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

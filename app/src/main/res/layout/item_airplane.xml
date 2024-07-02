@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/textViewNameId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name/ID"
+        android:textSize="16sp"
+        android:fontFamily="sans-serif-medium" />
+
+    <TextView
+        android:id="@+id/textViewModel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Model"
+        android:textSize="14sp"
+        android:fontFamily="sans-serif" />
+
+    <TextView
+        android:id="@+id/textViewCapacity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Capacity"
+        android:textSize="14sp"
+        android:fontFamily="sans-serif" />
+
+    <TextView
+        android:id="@+id/textViewMaxLuggageWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Max Luggage Weight Per Person"
+        android:textSize="14sp"
+        android:fontFamily="sans-serif" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end">
+
+        <Button
+            android:id="@+id/buttonDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Show Details"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif" />
+
+        <Button
+            android:id="@+id/buttonEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif" />
+
+        <Button
+            android:id="@+id/buttonDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delete"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/detailsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:paddingTop="8dp">
+
+        <TextView
+            android:id="@+id/textViewModelDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Model:"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif" />
+
+        <TextView
+            android:id="@+id/textViewCapacityDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Capacity:"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif" />
+
+        <TextView
+            android:id="@+id/textViewMaxLuggageWeightDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Max Luggage Weight Per Person:"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif" />
+    </LinearLayout>
+</LinearLayout>

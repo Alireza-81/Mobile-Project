@@ -58,7 +58,6 @@ public class FlightListManagementActivity extends AppCompatActivity {
         addFlight.setOnClickListener(v -> {
             startActivity(new Intent(FlightListManagementActivity.this, AddFlightActivity.class));
         });
-
         // Initialize DAOs
         flightDAO = FlightDAO.getInstance(this);
         airplaneDAO = AirplaneDAO.getInstance(this);
@@ -97,6 +96,7 @@ public class FlightListManagementActivity extends AppCompatActivity {
         flightDAO.insertFlight(new Flight(CityEnum.MASHHAD, CityEnum.TEHRAN, LocalDateTime.now(), airplane.getName(), staff, new ArrayList<>(), 100, 500));
         flightDAO.insertFlight(new Flight(CityEnum.TABRIZ, CityEnum.TEHRAN, LocalDateTime.now(), airplane.getName(), new ArrayList<>(), new ArrayList<>(), 100, 500));
         flightDAO.insertFlight(new Flight(CityEnum.AHVAZ, CityEnum.TEHRAN, LocalDateTime.now(), airplane.getName(), new ArrayList<>(), new ArrayList<>(), 100, 500));
+
 
     }
 }
