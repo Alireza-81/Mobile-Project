@@ -7,6 +7,8 @@ public class Airplane {
     private int capacity;
     private int maxLuggageWeightPerPerson;
 
+    // TODO add state: healthy, (under maintenance, broken) -> unavailable
+
     public Airplane(String name_id, String model, Flight flight, int capacity, int maxLuggageWeightPerPerson) {
         this.name_id = name_id;
         this.model = model;
