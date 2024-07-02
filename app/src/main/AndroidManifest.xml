@@ -35,7 +35,37 @@
             android:exported="true"
             android:label="@string/app_name" >
         </activity>
-        <activity android:name=".AddFlightActivity"></activity>
+
+        <activity
+            android:name=".AdminMainMenuActivity"
+            android:exported="true"
+            android:label="@string/app_name" >
+        </activity>
+
+        <activity
+            android:name=".EditFlightActivity"
+            android:exported="true"
+            android:label="@string/app_name" >
+        </activity>
+
+        <activity
+            android:name=".AirplaneListActivity"
+            android:exported="true"
+            android:label="@string/app_name" >
+        </activity>
+
+        <activity
+            android:name=".FlightListManagementActivity"
+            android:exported="true"
+            android:label="@string/app_name" >
+        </activity>
+
+        <activity
+            android:name=".AddFlightActivity"
+            android:exported="true"
+            android:label="@string/app_name" >
+        </activity>
+        
 
 
     </application>

@@ -50,16 +50,19 @@
             holder.remainingCapacity.setText("Remaining Capacity: " + flight.getRemainingCapacity());
             holder.price.setText("Price: " + flight.getPrice());
 
-            // Toggle visibility of details on button click
             holder.expandButton.setOnClickListener(v -> {
                 boolean isVisible = holder.detailsLayout.getVisibility() == View.VISIBLE;
                 holder.detailsLayout.setVisibility(isVisible ? View.GONE : View.VISIBLE);
                 holder.expandButton.setText(isVisible ? "Show More" : "Show Less");
             });
 
-            // Handle edit and delete button clicks (implement your logic)
-            holder.editButton.setOnClickListener(v -> {
-                // Handle edit action
+            holder.editButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, EditFlightActivity.class);
+                    intent.putExtra("flightID", flight.getId());
+                    context.startActivity(intent);
+                }
             });
 
             holder.deleteButton.setOnClickListener(v -> {

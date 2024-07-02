@@ -24,8 +24,8 @@ public class AdminMainMenuActivity extends AppCompatActivity {
         buttonFlightMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Add your intent here for Flight Menu
-                // Example: startActivity(new Intent(MainMenuActivity.this, FlightMenuActivity.class));
+                Intent intent = new Intent(AdminMainMenuActivity.this, FlightListManagementActivity.class);
+                startActivity(intent);
             }
         });
 
