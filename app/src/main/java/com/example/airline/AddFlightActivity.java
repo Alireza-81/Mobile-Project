@@ -63,13 +63,10 @@ public class AddFlightActivity extends AppCompatActivity {
             }
         });
 
-
         airplaneDAO.close();
     }
 
     private void addFlight() {
-        AirplaneDAO.getInstance(this).open();
-        FlightDAO.getInstance(this).open();
         String origin = spinnerOrigin.getSelectedItem().toString();
         String destination = spinnerDestination.getSelectedItem().toString();
         String date = editTextDate.getText().toString();
@@ -85,7 +82,9 @@ public class AddFlightActivity extends AppCompatActivity {
         double price = Double.parseDouble(priceStr);
 
         AirplaneDAO airplaneDAO = AirplaneDAO.getInstance(this);
+        airplaneDAO.open();
         Airplane airplane = airplaneDAO.getAirplaneByName(airplaneName);
+        airplaneDAO.close();
 
         if (airplane == null) {
             Toast.makeText(this, "Airplane not found", Toast.LENGTH_SHORT).show();
@@ -100,13 +99,18 @@ public class AddFlightActivity extends AppCompatActivity {
                 flightDateTime, airplane.getName(), new ArrayList<>(), new ArrayList<>(), airplane.getCapacity(), (int)price);
 
         FlightDAO flightDAO = FlightDAO.getInstance(this);
-        long res= flightDAO.insertFlight(flight);
-        Toast.makeText(getApplicationContext(), String.valueOf(res), Toast.LENGTH_SHORT).show();
+        flightDAO.open();
+        long result = flightDAO.insertFlight(flight);
+        flightDAO.close();
 
-        Toast.makeText(this, "Flight added successfully", Toast.LENGTH_SHORT).show();
-        AirplaneDAO.getInstance(this).close();
-        FlightDAO.getInstance(this).close();
-        startActivity(new Intent(AddFlightActivity.this, FlightListManagementActivity.class));
+        if (result != -1) {
+            Toast.makeText(this, "Flight added successfully", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Failed to add flight", Toast.LENGTH_SHORT).show();
+        }
+
+        Intent intent = new Intent(AddFlightActivity.this, FlightListManagementActivity.class);
+        startActivity(intent);
         finish(); // Close the activity
     }
 }

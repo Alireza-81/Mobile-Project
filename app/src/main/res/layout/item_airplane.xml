@@ -21,22 +21,6 @@
         android:textSize="14sp"
         android:fontFamily="sans-serif" />
 
-    <TextView
-        android:id="@+id/textViewCapacity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Capacity"
-        android:textSize="14sp"
-        android:fontFamily="sans-serif" />
-
-    <TextView
-        android:id="@+id/textViewMaxLuggageWeight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Max Luggage Weight Per Person"
-        android:textSize="14sp"
-        android:fontFamily="sans-serif" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -48,14 +32,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Show Details"
-            android:textSize="14sp"
-            android:fontFamily="sans-serif" />
-
-        <Button
-            android:id="@+id/buttonEdit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Edit"
             android:textSize="14sp"
             android:fontFamily="sans-serif" />
 
@@ -75,14 +51,6 @@
         android:orientation="vertical"
         android:visibility="gone"
         android:paddingTop="8dp">
-
-        <TextView
-            android:id="@+id/textViewModelDetail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Model:"
-            android:textSize="14sp"
-            android:fontFamily="sans-serif" />
 
         <TextView
             android:id="@+id/textViewCapacityDetail"

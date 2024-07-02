@@ -32,9 +32,6 @@ public class AirplaneAdapter extends RecyclerView.Adapter<AirplaneAdapter.Airpla
         Airplane airplane = airplaneList.get(position);
         holder.textViewNameId.setText("Name/ID: " + airplane.getName());
         holder.textViewModel.setText("Model: " + airplane.getModel());
-        holder.textViewCapacity.setText("Capacity: " + airplane.getCapacity());
-        holder.textViewMaxLuggageWeight.setText("Max Luggage Weight Per Person: " + airplane.getMaxLuggageWeightPerPerson());
-
         holder.buttonDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,20 +44,8 @@ public class AirplaneAdapter extends RecyclerView.Adapter<AirplaneAdapter.Airpla
                 }
             }
         });
-
-        holder.buttonEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Handle edit action
-            }
-        });
-
-        holder.buttonDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Handle delete action
-            }
-        });
+        holder.textViewMaxW.setText("Max Luggage Weight Per Person: " + String.valueOf(airplane.getMaxLuggageWeightPerPerson()));
+        holder.textViewCapacity.setText("Capacity: " + String.valueOf(airplane.getCapacity()));
     }
 
     @Override
@@ -69,21 +54,19 @@ public class AirplaneAdapter extends RecyclerView.Adapter<AirplaneAdapter.Airpla
     }
 
     public static class AirplaneViewHolder extends RecyclerView.ViewHolder {
-        TextView textViewNameId, textViewModel, textViewCapacity, textViewMaxLuggageWeight;
+        TextView textViewNameId, textViewModel, textViewCapacity, textViewMaxW;
         LinearLayout detailsLayout;
-        Button buttonDetails, buttonEdit, buttonDelete;
+        Button buttonDetails, buttonDelete;
 
         public AirplaneViewHolder(@NonNull View itemView) {
             super(itemView);
             textViewNameId = itemView.findViewById(R.id.textViewNameId);
             textViewModel = itemView.findViewById(R.id.textViewModel);
-            textViewCapacity = itemView.findViewById(R.id.textViewCapacity);
-            textViewMaxLuggageWeight = itemView.findViewById(R.id.textViewMaxLuggageWeight);
             detailsLayout = itemView.findViewById(R.id.detailsLayout);
             buttonDetails = itemView.findViewById(R.id.buttonDetails);
-            buttonEdit = itemView.findViewById(R.id.buttonEdit);
             buttonDelete = itemView.findViewById(R.id.buttonDelete);
-
+            textViewCapacity = itemView.findViewById(R.id.textViewCapacityDetail);
+            textViewMaxW = itemView.findViewById(R.id.textViewMaxLuggageWeightDetail);
             detailsLayout.setVisibility(View.GONE);
         }
     }
