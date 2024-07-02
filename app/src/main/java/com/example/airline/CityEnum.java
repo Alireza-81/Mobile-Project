@@ -13,17 +13,13 @@ public enum CityEnum {
     KERMAN("kerman"),
     KISH("kish"),
     BANDARABBAS("bandar abbas");
-
     private final String value;
-
     CityEnum(String value) {
         this.value = value;
     }
-
     public String getValue() {
         return value;
     }
-
     public static List<String> getValues() {
         List<String> values = new ArrayList<>();
         for (CityEnum city : CityEnum.values()) {

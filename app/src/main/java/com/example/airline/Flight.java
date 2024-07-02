@@ -9,19 +9,19 @@ public class Flight {
     private CityEnum origin;
     private CityEnum destination;
     private LocalDateTime dateTime;
-    private Airplane airplane;
-    private List<Staff> staffList;
-    private List<Customer> customerList;
+    private String airplaneNameId;
+    private List<String> staffList;
+    private List<String> customerList;
     private int remainingCapacity;
     private int price;
 
 
 
-    public Flight(CityEnum origin, CityEnum destination, LocalDateTime dataTime, Airplane airplane, List<Staff> staffList, List<Customer> customerList, int remainingCapacity, int price) {
+    public Flight(CityEnum origin, CityEnum destination, LocalDateTime dataTime, String airplaneNameId, List<String> staffList, List<String> customerList, int remainingCapacity, int price) {
         this.origin = origin;
         this.destination = destination;
         this.dateTime = dataTime;
-        this.airplane = airplane;
+        this.airplaneNameId = airplaneNameId;
         this.staffList = staffList;
         this.customerList = customerList;
         this.remainingCapacity = remainingCapacity;
@@ -46,17 +46,10 @@ public class Flight {
         this.dateTime = dateTime;
     }
 
-    public void setAirplane(Airplane airplane) {
-        this.airplane = airplane;
+    public void setAirplane(String airplaneNameId) {
+        this.airplaneNameId = airplaneNameId;
     }
 
-    public void setStaffList(List<Staff> staffList) {
-        this.staffList = staffList;
-    }
-
-    public void setCustomerList(List<Customer> customerList) {
-        this.customerList = customerList;
-    }
 
     public void setRemainingCapacity(int remainingCapacity) {
         this.remainingCapacity = remainingCapacity;
@@ -78,16 +71,24 @@ public class Flight {
         return dateTime;
     }
 
-    public Airplane getAirplane() {
-        return airplane;
+    public String getAirplaneNameId() {
+        return airplaneNameId;
     }
 
-    public List<Staff> getStaffList() {
+    public List<String> getStaffList() {
         return staffList;
     }
 
-    public List<Customer> getCustomerList() {
+    public void setStaffList(List<String> staffList) {
+        this.staffList = staffList;
+    }
+
+    public List<String> getCustomerList() {
         return customerList;
+    }
+
+    public void setCustomerList(List<String> customerList) {
+        this.customerList = customerList;
     }
 
     public int getRemainingCapacity() {
