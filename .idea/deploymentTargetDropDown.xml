@@ -5,6 +5,9 @@
       <entry key="FlightListManagementActivity">
         <State />
       </entry>
+      <entry key="LoginActivity">
+        <State />
+      </entry>
     </value>
   </component>
 </project>
