@@ -11,6 +11,7 @@ import java.util.List;
 public class AirplaneDAO {
 
     private SQLiteDatabase database;
+
     private AirplaneDatabaseHelper dbHelper;
 
     private static AirplaneDAO instance;

@@ -14,7 +14,7 @@ public class Flight {
     private String airplaneNameId;
     private List<String> staffList;
     private List<String> customerList;
-    private int remainingCapacity;
+    private int remainingCapacity=12;
     private int price;
 
 

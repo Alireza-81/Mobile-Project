@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class AirplaneDatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "airplanes.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     // Table name
     public static final String TABLE_AIRPLANES = "Airplanes";
@@ -28,6 +28,7 @@ public class AirplaneDatabaseHelper extends SQLiteOpenHelper {
 
     public AirplaneDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+
     }
 
     @Override

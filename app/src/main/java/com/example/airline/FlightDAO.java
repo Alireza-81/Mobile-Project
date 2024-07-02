@@ -1,81 +1,4 @@
-package com.example.airline;//package com.example.airline;// FlightDAO.java
-//import android.content.ContentValues;
-//import android.content.Context;
-//import android.database.Cursor;
-//import android.database.SQLException;
-//import android.database.sqlite.SQLiteDatabase;
-//
-//import com.google.gson.Gson;
-//import com.google.gson.reflect.TypeToken;
-//
-//import java.lang.reflect.Type;
-//import java.time.LocalDateTime;
-//import java.util.ArrayList;
-//import java.util.List;
-//
-//public class FlightDAO {
-//
-//    private SQLiteDatabase database;
-//    private FlightDatabaseHelper dbHelper;
-//    private Gson gson;
-//
-//    public FlightDAO(Context context) {
-//        dbHelper = new FlightDatabaseHelper(context);
-//        gson = new Gson();
-//    }
-//
-//    public void open() throws SQLException {
-//        database = dbHelper.getWritableDatabase();
-//    }
-//
-//    public void close() {
-//        dbHelper.close();
-//    }
-//
-//    public void insertFlight(Flight flight) {
-//        ContentValues values = new ContentValues();
-//        values.put(FlightDatabaseHelper.COLUMN_ORIGIN, flight.getOrigin().toString());
-//        values.put(FlightDatabaseHelper.COLUMN_DESTINATION, flight.getDestination().toString());
-//        values.put(FlightDatabaseHelper.COLUMN_DATETIME, flight.getDateTime().toString());
-//        values.put(FlightDatabaseHelper.COLUMN_AIRPLANE_NAME_ID, flight.getAirplaneNameId());
-//        values.put(FlightDatabaseHelper.COLUMN_REMAINING_CAPACITY, flight.getRemainingCapacity());
-//        values.put(FlightDatabaseHelper.COLUMN_PRICE, flight.getPrice());
-//        values.put(FlightDatabaseHelper.COLUMN_STAFF_LIST, gson.toJson(flight.getStaffList()));
-//        values.put(FlightDatabaseHelper.COLUMN_CUSTOMER_LIST, gson.toJson(flight.getCustomerList()));
-//
-//        database.insert(FlightDatabaseHelper.TABLE_FLIGHTS, null, values);
-//    }
-//
-//    public List<Flight> getFlightsByOrigin(String origin) {
-//        List<Flight> flights = new ArrayList<>();
-//        Cursor cursor = database.query(FlightDatabaseHelper.TABLE_FLIGHTS,
-//                null, FlightDatabaseHelper.COLUMN_ORIGIN + " = ?", new String[]{origin}, null, null, null);
-//
-//        cursor.moveToFirst();
-//        while (!cursor.isAfterLast()) {
-//            Flight flight = cursorToFlight(cursor);
-//            flights.add(flight);
-//            cursor.moveToNext();
-//        }
-//        cursor.close();
-//        return flights;
-//    }
-//
-//    private Flight cursorToFlight(Cursor cursor) {
-//        Type listType = new TypeToken<List<String>>() {}.getType();
-//
-//        return new Flight(
-//                CityEnum.valueOf(cursor.getString(cursor.getColumnIndexOrThrow(FlightDatabaseHelper.COLUMN_ORIGIN))),
-//                CityEnum.valueOf(cursor.getString(cursor.getColumnIndexOrThrow(FlightDatabaseHelper.COLUMN_DESTINATION))),
-//                LocalDateTime.parse(cursor.getString(cursor.getColumnIndexOrThrow(FlightDatabaseHelper.COLUMN_DATETIME))),
-//                cursor.getString(cursor.getColumnIndexOrThrow(FlightDatabaseHelper.COLUMN_AIRPLANE_NAME_ID)),
-//                gson.fromJson(cursor.getString(cursor.getColumnIndexOrThrow(FlightDatabaseHelper.COLUMN_STAFF_LIST)), listType),
-//                gson.fromJson(cursor.getString(cursor.getColumnIndexOrThrow(FlightDatabaseHelper.COLUMN_CUSTOMER_LIST)), listType),
-//                cursor.getInt(cursor.getColumnIndexOrThrow(FlightDatabaseHelper.COLUMN_REMAINING_CAPACITY)),
-//                cursor.getInt(cursor.getColumnIndexOrThrow(FlightDatabaseHelper.COLUMN_PRICE))
-//        );
-//    }
-//}
+package com.example.airline;
 
 
 // FlightDAO.java
@@ -95,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FlightDAO {
+
 
     private SQLiteDatabase database;
     private FlightDatabaseHelper dbHelper;
@@ -254,6 +178,10 @@ public class FlightDAO {
         } else {
             return null;
         }
+    }
+    public void dropAndRecreateTable() {
+        database.execSQL("DROP TABLE IF EXISTS " + FlightDatabaseHelper.TABLE_FLIGHTS);
+        dbHelper.onCreate(database);
     }
 
 
