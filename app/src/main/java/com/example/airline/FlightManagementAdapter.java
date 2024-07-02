@@ -36,7 +36,7 @@ public class FlightManagementAdapter extends RecyclerView.Adapter<FlightManageme
 
         // Bind additional details (hidden by default)
         holder.flightNumber.setText("Flight Number: " + flight.getDestination());
-        holder.airplane.setText("Airplane: " + flight.getAirplane().getModel());
+//        holder.airplane.setText("Airplane: " + flight.getAirplane().getModel());
         holder.staffList.setText("Staff List: " + flight.getStaffList().toString());
         holder.customerList.setText("Customer List: " + flight.getCustomerList().toString());
         holder.remainingCapacity.setText("Remaining Capacity: " + flight.getRemainingCapacity());
