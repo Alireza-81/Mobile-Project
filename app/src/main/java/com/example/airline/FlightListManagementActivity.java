@@ -23,13 +23,13 @@ public class FlightListManagementActivity extends AppCompatActivity {
         recyclerViewFlights = findViewById(R.id.recyclerViewFlights);
         recyclerViewFlights.setLayoutManager(new LinearLayoutManager(this));
 
-//        flightList = new ArrayList<>();
-//        Airplane airplane = new Airplane("meow", "Boeing 747", null, 10, 10);
-//        for (int i = 0; i < 20; i++) {
-//            flightList.add(new Flight(CityEnum.MASHHAD, CityEnum.TEHRAN, LocalDateTime.now(), airplane, new ArrayList<>(), new ArrayList<>(), 180, 500));
-//            flightList.add(new Flight(CityEnum.TABRIZ, CityEnum.TEHRAN, LocalDateTime.now(), airplane, new ArrayList<>(), new ArrayList<>(), 180, 500));
-//            flightList.add(new Flight( CityEnum.AHVAZ, CityEnum.TEHRAN, LocalDateTime.now(), airplane, new ArrayList<>(), new ArrayList<>(), 180, 500));
-//        }
+        flightList = new ArrayList<>();
+        Airplane airplane = new Airplane("meow", "Boeing 747", 10, 10);
+        for (int i = 0; i < 20; i++) {
+            flightList.add(new Flight(CityEnum.MASHHAD, CityEnum.TEHRAN, LocalDateTime.now(), airplane.getName(), new ArrayList<>(), new ArrayList<>(), 180, 500));
+            flightList.add(new Flight(CityEnum.TABRIZ, CityEnum.TEHRAN, LocalDateTime.now(), airplane.getName(), new ArrayList<>(), new ArrayList<>(), 180, 500));
+            flightList.add(new Flight( CityEnum.AHVAZ, CityEnum.TEHRAN, LocalDateTime.now(), airplane.getName(), new ArrayList<>(), new ArrayList<>(), 180, 500));
+        }
 
         flightAdapter = new FlightManagementAdapter(flightList);
         recyclerViewFlights.setAdapter(flightAdapter);
