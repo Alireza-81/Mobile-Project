@@ -14,7 +14,7 @@
         tools:targetApi="31">
 
         <activity
-            android:name=".EditFlightActivity"
+            android:name=".AirplaneListActivity"
             android:exported="true"
             android:label="@string/app_name" >
 
