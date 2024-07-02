@@ -2,11 +2,10 @@ package com.example.airline;// AirplaneDatabaseHelper.java
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
 public class AirplaneDatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "airplanes.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
 
     // Table name
     public static final String TABLE_AIRPLANES = "Airplanes";
@@ -28,7 +27,6 @@ public class AirplaneDatabaseHelper extends SQLiteOpenHelper {
 
     public AirplaneDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-
     }
 
     @Override
@@ -38,6 +36,12 @@ public class AirplaneDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_AIRPLANES);
+        onCreate(db);
+    }
+
+    // Drop and recreate table method
+    public void dropAndRecreateTable(SQLiteDatabase db) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_AIRPLANES);
         onCreate(db);
     }

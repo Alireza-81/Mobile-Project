@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <Spinner
+        android:id="@+id/spinnerOrigin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:prompt="@string/origin_prompt" />
+
+    <Spinner
+        android:id="@+id/spinnerDestination"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:prompt="@string/destination_prompt" />
+
+    <EditText
+        android:id="@+id/editTextDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Date (yyyy-MM-dd)" />
+
+    <EditText
+        android:id="@+id/editTextTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Time (HH:mm)" />
+
+    <Spinner
+        android:id="@+id/spinnerAirplane"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:prompt="@string/airplane_prompt" />
+
+    <EditText
+        android:id="@+id/editTextPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Price" />
+
+    <Button
+        android:id="@+id/buttonAddFlight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Flight" />
+</LinearLayout>

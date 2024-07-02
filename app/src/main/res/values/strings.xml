@@ -3,4 +3,8 @@
     <string name="login_page_title">Login</string>
     <string name="username_hint">Username</string>
     <string name="password_hint">Password</string>
+    <string name="origin_prompt">Select Origin</string>
+    <string name="airplane_prompt">Select Airplane</string>
+    <string name="destination_prompt">Select Destination</string>
+
 </resources>

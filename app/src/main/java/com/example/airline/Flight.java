@@ -7,14 +7,25 @@ import java.util.List;
 public class Flight {
 //    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
-    private int flightNumber;
+    private String id;
     private CityEnum origin;
     private CityEnum destination;
+
+
     private LocalDateTime dateTime;
     private String airplaneNameId;
     private List<String> staffList;
     private List<String> customerList;
     private int remainingCapacity=12;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     private int price;
 
 
