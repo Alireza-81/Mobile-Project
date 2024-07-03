@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if (selectedId == R.id.radioButton1) {
             Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(LoginActivity.this, TicketsActivity.class);
+            Intent intent = new Intent(LoginActivity.this, NavigationActivity.class);
             startActivity(intent);
         } else if (selectedId == R.id.radioButton2) {
             Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show();
