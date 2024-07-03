@@ -14,7 +14,19 @@
     <Spinner
         android:id="@+id/date_spinner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Origin" />
+
+    <Spinner
+        android:id="@+id/origin_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -24,7 +36,8 @@
     <Spinner
         android:id="@+id/destination_spinner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -34,18 +47,21 @@
     <Spinner
         android:id="@+id/seats_spinner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp" />
 
     <Button
         android:id="@+id/search_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Search" />
+        android:text="Search"
+        android:layout_marginBottom="16dp" />
 
-    <TextView
-        android:id="@+id/results_text"
+    <LinearLayout
+        android:id="@+id/results_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="16dp" />
+        android:orientation="vertical"
+        android:layout_marginTop="16dp" />
 
 </LinearLayout>

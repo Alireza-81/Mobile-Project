@@ -13,6 +13,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -142,6 +143,30 @@ public class FlightDAO {
                         Flight flight = new Flight(CityEnum.valueOf(originCity.toUpperCase()), CityEnum.valueOf(destinationCity.toUpperCase()), dateTime, airplaneName, new ArrayList<>(), new ArrayList<>(), remainingCapacity, price);
                         flight.setId(id);
                         flights.add(flight);
+                    } while (cursor.moveToNext());
+                }
+            } finally {
+                cursor.close();
+            }
+        }
+
+        return flights;
+    }
+
+    public List<Flight> getFlightsByDate(LocalDate date) {
+        List<Flight> flights = new ArrayList<>();
+        String dateString = date.toString();  // Format date as yyyy-MM-dd
+        String selection = "strftime('%Y-%m-%d', " + FlightDatabaseHelper.COLUMN_DATETIME + ") = ?";
+        String[] selectionArgs = { dateString };
+
+        Cursor cursor = database.query(FlightDatabaseHelper.TABLE_FLIGHTS,
+                null, selection, selectionArgs, null, null, null);
+
+        if (cursor != null) {
+            try {
+                if (cursor.moveToFirst()) {
+                    do {
+                        flights.add(cursorToFlight(cursor));
                     } while (cursor.moveToNext());
                 }
             } finally {
