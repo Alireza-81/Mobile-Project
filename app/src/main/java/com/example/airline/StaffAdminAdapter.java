@@ -16,11 +16,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class StaffAdapter extends RecyclerView.Adapter<StaffAdapter.StaffViewHolder> {
+public class StaffAdminAdapter extends RecyclerView.Adapter<StaffAdminAdapter.StaffViewHolder> {
 
     private List<Staff> staffList;
 
-    public StaffAdapter(List<Staff> staffList) {
+    public StaffAdminAdapter(List<Staff> staffList) {
         this.staffList = staffList;
     }
 

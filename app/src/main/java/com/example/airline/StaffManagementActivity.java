@@ -14,7 +14,7 @@ import java.util.List;
 public class StaffManagementActivity extends AppCompatActivity {
 
     private RecyclerView recyclerViewStaff;
-    private StaffAdapter staffAdapter;
+    private StaffAdminAdapter staffAdapter;
     private List<Staff> staffList;
     private Button buttonAddStaff;
 
@@ -33,7 +33,7 @@ public class StaffManagementActivity extends AppCompatActivity {
             staffList.add(new Staff("username", "1234", true));
         }
 
-        staffAdapter = new StaffAdapter(staffList);
+        staffAdapter = new StaffAdminAdapter(staffList);
         recyclerViewStaff.setAdapter(staffAdapter);
 
         buttonAddStaff.setOnClickListener(new View.OnClickListener() {
