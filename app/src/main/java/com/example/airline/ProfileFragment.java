@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,9 +19,9 @@ public class ProfileFragment extends Fragment {
     Users users = Users.getInstance();
     User logged_in = users.getLoggedInUser();
     private ImageView profileImageView;
-    private TextView usernameTextView;
-    private TextView emailTextView;
-    private TextView phoneTextView;
+    private EditText usernameTextView;
+    private EditText emailTextView;
+    private EditText phoneTextView;
     private Button editProfileButton;
 
     @Nullable
@@ -64,11 +65,9 @@ public class ProfileFragment extends Fragment {
         phoneTextView.setText(phone);
     }
 
-    private void editProfile() {
-        // Handle edit profile action
-        // For example, navigate to an EditProfileFragment
-        // You can use the Navigation component or FragmentManager to handle navigation
-        // For example:
-        // NavHostFragment.findNavController(this).navigate(R.id.action_profileFragment_to_editProfileFragment);
+    public void editProfile() {
+        logged_in.setEmail(emailTextView.getText().toString());
+        logged_in.setPhone(phoneTextView.getText().toString());
+        logged_in.setUsername(usernameTextView.getText().toString());
     }
 }

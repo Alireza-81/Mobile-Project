@@ -6,5 +6,7 @@
     <string name="origin_prompt">Select Origin</string>
     <string name="airplane_prompt">Select Airplane</string>
     <string name="destination_prompt">Select Destination</string>
+    <string name="email_hint">email\n</string>
+    <string name="phone_hint">phone number</string>
 
 </resources>

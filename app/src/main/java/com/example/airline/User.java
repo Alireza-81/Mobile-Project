@@ -7,9 +7,11 @@ public class User {
     private String phone;
     private boolean isLoggedIn;
     // Constructor
-    public User(String username, String password, boolean isLoggedIn) {
+    public User(String username, String password, String email, String phone, boolean isLoggedIn) {
         this.username = username;
         this.password = password;
+        this.email = email;
+        this.phone = phone;
         this.isLoggedIn = isLoggedIn;
     }
 
