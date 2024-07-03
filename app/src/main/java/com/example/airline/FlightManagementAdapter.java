@@ -449,10 +449,13 @@
             Flight flight = flightList.get(position);
 
             // Bind initial visible details
-            holder.originDestination.setText(flight.getOrigin() + " - " + flight.getDestination());
-            holder.dateTime.setText(flight.getDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
+            holder.origin.setText(flight.getOrigin().getValue());
+            holder.dest.setText(flight.getDestination().getValue());
 
-            // Bind additional details (hidden by default)
+            //            holder.originDestination.setText(flight.getOrigin().getValue() + " - " + flight.getDestination());
+            holder.dateTime.setText(flight.getDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
+//
+//            // Bind additional details (hidden by default)
             holder.flightNumber.setText("Flight Number: " + flight.getId());
             holder.airplane.setText("Airplane: " + flight.getAirplaneNameId());
             holder.staffList.setText("Staff List: " + flight.getStaffList().toString());
@@ -497,13 +500,16 @@
         }
 
         public static class FlightViewHolder extends RecyclerView.ViewHolder {
-            TextView originDestination, dateTime, flightNumber, airplane, staffList, customerList, remainingCapacity, price;
+            TextView  dateTime, flightNumber, airplane, staffList, customerList, remainingCapacity, price;
             Button expandButton, editButton, deleteButton;
+            TextView origin, dest;
             LinearLayout detailsLayout;
 
             public FlightViewHolder(@NonNull View itemView) {
                 super(itemView);
-                originDestination = itemView.findViewById(R.id.originDestination);
+//                originDestination = itemView.findViewById(R.id.originDestination);
+                origin = itemView.findViewById(R.id.origin);
+                dest = itemView.findViewById(R.id.destination);
                 dateTime = itemView.findViewById(R.id.dateTime);
                 expandButton = itemView.findViewById(R.id.expandButton);
                 detailsLayout = itemView.findViewById(R.id.detailsLayout);

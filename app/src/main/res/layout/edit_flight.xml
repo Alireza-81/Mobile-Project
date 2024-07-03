@@ -131,13 +131,12 @@
                 android:textSize="16sp"
                 android:paddingTop="8dp"
                 android:fontFamily="sans-serif-medium" />
-
-            <EditText
-                android:id="@+id/editTextAirplaneName"
+            <Spinner
+                android:id="@+id/spinnerAirplaneName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
-                android:fontFamily="sans-serif" />
+                android:prompt="@string/airplane_prompt" />
+
 
             <TextView
                 android:layout_width="wrap_content"

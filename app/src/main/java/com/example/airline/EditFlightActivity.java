@@ -21,8 +21,8 @@ import java.util.List;
 
 public class EditFlightActivity extends AppCompatActivity {
 
-    private Spinner spinnerOrigin, spinnerDestination;
-    private EditText editTextDateTime, editTextAirplaneName;
+    private Spinner spinnerOrigin, spinnerDestination, spinnerAirplane;
+    private EditText editTextDateTime;
 
     private Button buttonSaveChanges;
     private TextView shownPrice;
@@ -42,13 +42,10 @@ public class EditFlightActivity extends AppCompatActivity {
         spinnerOrigin = findViewById(R.id.spinnerOrigin);
         spinnerDestination = findViewById(R.id.spinnerDestination);
         editTextDateTime = findViewById(R.id.editTextDateTime);
-        editTextAirplaneName = findViewById(R.id.editTextAirplaneName);
 
         shownPrice = findViewById(R.id.textViewPriceValue);
         chosenPrice = findViewById(R.id.seekBarPrice);
 
-
-//        Toast.makeText(this, String.valueOf(flightID), Toast.LENGTH_SHORT).show();
 
         chosenPrice.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -68,6 +65,9 @@ public class EditFlightActivity extends AppCompatActivity {
         textViewCapacityValue = findViewById(R.id.textViewCapacityValue);
         buttonDecreaseCapacity = findViewById(R.id.buttonDecreaseCapacity);
         buttonIncreaseCapacity = findViewById(R.id.buttonIncreaseCapacity);
+        spinnerAirplane = findViewById(R.id.spinnerAirplaneName);
+
+
 
         buttonDecreaseCapacity.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,14 +113,29 @@ public class EditFlightActivity extends AppCompatActivity {
         flightDAO.close();
 
         if (flight != null) {
+            AirplaneDAO airplaneDAO = AirplaneDAO.getInstance(this);
+            airplaneDAO.open();
+            List<Airplane> airplanes = airplaneDAO.getAllAirplanes();
+            List<String> airplaneNames = new ArrayList<>();
+            for (Airplane airplane : airplanes) {
+                airplaneNames.add(airplane.getName());
+            }
+            ArrayAdapter<String> airplaneAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, airplaneNames);
+            airplaneAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinnerAirplane.setAdapter(airplaneAdapter);
+            airplaneDAO.close();
+
+            int position = airplaneAdapter.getPosition(flight.getAirplaneNameId());
+            spinnerAirplane.setSelection(position);
+
             // Populate UI with flight data
             spinnerOrigin.setSelection(flight.getOrigin().ordinal());  // Set the correct item in the spinner
             spinnerDestination.setSelection(flight.getDestination().ordinal());  // Set the correct item in the spinner
             editTextDateTime.setText(flight.getDateTime().toString());
-            editTextAirplaneName.setText(flight.getAirplaneNameId());
             shownPrice.setText(String.valueOf(flight.getPrice()));
             chosenPrice.setProgress(flight.getPrice());
             textViewCapacityValue.setText(String.valueOf(flight.getRemainingCapacity()));
+
         } else {
             Toast.makeText(this, "Flight not found", Toast.LENGTH_SHORT).show();
         }
@@ -131,7 +146,7 @@ public class EditFlightActivity extends AppCompatActivity {
         String origin = spinnerOrigin.getSelectedItem().toString();
         String destination = spinnerDestination.getSelectedItem().toString();
         String dateTime = editTextDateTime.getText().toString();
-        String airplaneName = editTextAirplaneName.getText().toString();
+        String airplaneName = spinnerAirplane.getSelectedItem().toString();
         int price = chosenPrice.getProgress();
         int capacity = Integer.parseInt(textViewCapacityValue.getText().toString());
 

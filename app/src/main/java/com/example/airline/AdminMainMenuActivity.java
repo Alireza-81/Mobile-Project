@@ -32,16 +32,16 @@ public class AdminMainMenuActivity extends AppCompatActivity {
         buttonAirplaneMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Add your intent here for Airplane Menu
-                // Example: startActivity(new Intent(MainMenuActivity.this, AirplaneMenuActivity.class));
+                Intent intent = new Intent(AdminMainMenuActivity.this, AirplaneListActivity.class);
+                startActivity(intent);
             }
         });
 
         buttonStaffMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Add your intent here for Staff Menu
-                // Example: startActivity(new Intent(MainMenuActivity.this, StaffMenuActivity.class));
+                Intent intent = new Intent(AdminMainMenuActivity.this, StaffManagementActivity.class);
+                startActivity(intent);
             }
         });
 

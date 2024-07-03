@@ -83,6 +83,7 @@ public class AirplaneListActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(AirplaneListActivity.this, AddAirplaneActivity.class);
                 startActivityForResult(intent, 1);
+                finish();
             }
         });
 
