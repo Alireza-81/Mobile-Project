@@ -64,6 +64,25 @@ public class Users {
         return null;
     }
 
+    public User getLoggedInUser(){
+        for (User user : customerList){
+            if (user.getLoggedIn()){
+                return user;
+            }
+        }
+        for (User user : staffList){
+            if (user.getLoggedIn()){
+                return user;
+            }
+        }
+        for (User user : adminList){
+            if (user.getLoggedIn()){
+                return user;
+            }
+        }
+        return null;
+    }
+
 
 
     //TODO authenticate
