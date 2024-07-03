@@ -84,7 +84,7 @@
 
             public FlightViewHolder(@NonNull View itemView) {
                 super(itemView);
-                originDestination = itemView.findViewById(R.id.originDestination);
+//                originDestination = itemView.findViewById(R.id.originDestination);
                 dateTime = itemView.findViewById(R.id.dateTime);
                 expandButton = itemView.findViewById(R.id.expandButton);
                 detailsLayout = itemView.findViewById(R.id.detailsLayout);

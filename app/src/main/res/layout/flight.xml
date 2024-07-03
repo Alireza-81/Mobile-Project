@@ -5,13 +5,37 @@
     android:orientation="vertical"
     android:padding="8dp">
 
-    <!-- Initial visible details -->
-    <TextView
-        android:id="@+id/originDestination"
-        style="@style/FlightItemText"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Origin - Destination" />
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/origin"
+            style="@style/FlightItemText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Origin"
+            android:textSize="10pt"/>
+
+        <ImageView
+            android:id="@+id/airplaneIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_airplane"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="Airplane Icon" />
+
+        <TextView
+            android:id="@+id/destination"
+            style="@style/FlightItemText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Destination"
+            android:textSize="10pt"/>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/dateTime"
@@ -26,7 +50,8 @@
         style="@style/FlightItemButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Show More" />
+        android:text="Show More"
+        android:backgroundTint="@color/primary_color"/>
 
     <!-- Additional details initially hidden -->
     <LinearLayout
