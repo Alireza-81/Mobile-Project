@@ -30,7 +30,7 @@ public class StaffManagementActivity extends AppCompatActivity {
         staffList = new ArrayList<>();
 
         for (int i = 0; i < 10; i++) {
-            staffList.add(new Staff("username", "1234", true));
+            staffList.add(new Staff("username", "1234", "miow@gmail.com", "0911111", true));
         }
 
         staffAdapter = new StaffAdminAdapter(staffList);

@@ -26,13 +26,13 @@ public class Users {
 
 
     // Method to add a new user
-    public void addUser(String username, String password, boolean isLoggedIn, UserEnum userEnum) {
+    public void addUser(String username, String password, String email, String phone, boolean isLoggedIn, UserEnum userEnum) {
         if (userEnum == UserEnum.ADMIN){
-            adminList.add(new Admin(username, password, isLoggedIn));
+            adminList.add(new Admin(username, password, email, phone, isLoggedIn));
         }else if (UserEnum.CUSTOMER == userEnum){
-            customerList.add(new Customer(username, password, isLoggedIn));
+            customerList.add(new Customer(username, password, email, phone, isLoggedIn));
         }else if (UserEnum.STAFF == userEnum){
-            staffList.add(new Staff(username, password, isLoggedIn));
+            staffList.add(new Staff(username, password, email, phone, isLoggedIn));
         }
     }
 
@@ -59,6 +59,25 @@ public class Users {
             for (Customer customer : customerList){
             if(customer.getUsername().equals(username)){
                 return customer;
+            }
+        }
+        return null;
+    }
+
+    public User getLoggedInUser(){
+        for (User user : customerList){
+            if (user.getLoggedIn()){
+                return user;
+            }
+        }
+        for (User user : staffList){
+            if (user.getLoggedIn()){
+                return user;
+            }
+        }
+        for (User user : adminList){
+            if (user.getLoggedIn()){
+                return user;
             }
         }
         return null;

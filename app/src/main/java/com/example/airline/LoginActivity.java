@@ -12,7 +12,12 @@ import androidx.appcompat.app.AppCompatActivity;
 public class LoginActivity extends AppCompatActivity {
     private EditText usernameEditText;
     private EditText passwordEditText;
+
+    private EditText emailEditText;
+    private EditText phoneEditText;
     private RadioGroup radioGroupButtons;
+
+    private Users users = Users.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +26,8 @@ public class LoginActivity extends AppCompatActivity {
 
         usernameEditText = findViewById(R.id.username);
         passwordEditText = findViewById(R.id.password);
+        emailEditText = findViewById(R.id.email);
+        phoneEditText = findViewById(R.id.phone);
         radioGroupButtons = findViewById(R.id.radio_group);
 
 
@@ -34,10 +41,13 @@ public class LoginActivity extends AppCompatActivity {
     private void attemptLogin() {
         String username = usernameEditText.getText().toString();
         String password = passwordEditText.getText().toString();
+        String email = emailEditText.getText().toString();
+        String phone = phoneEditText.getText().toString();
 
         if (username.equals("admin") && password.equals("admin")) {
             // Login success
-
+            User user = new User(username, password, email, phone, true);
+            users.addUser(username, password, email, phone, true, UserEnum.ADMIN);
             Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show();
             launchActivityBasedOnSelection();
 
@@ -53,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if (selectedId == R.id.radioButton1) {
             Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(LoginActivity.this, TicketsActivity.class);
+            Intent intent = new Intent(LoginActivity.this, NavigationActivity.class);
             startActivity(intent);
         } else if (selectedId == R.id.radioButton2) {
             Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show();

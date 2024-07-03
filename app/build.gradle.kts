@@ -37,7 +37,12 @@ dependencies {
     implementation(libs.material)
     implementation(libs.firebase.crashlytics.buildtools)
     implementation(libs.constraintlayout)
+    implementation(libs.navigation.fragment)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    implementation ("com.google.android.material:material:1.6.0")
+
+    implementation ("androidx.navigation:navigation-fragment-ktx:2.5.0")
+    implementation ("androidx.navigation:navigation-ui-ktx:2.5.0")
 }

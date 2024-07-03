@@ -31,7 +31,8 @@ public class SplashActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                startActivity(new Intent(SplashActivity.this, AdminMainMenuActivity.class));
+//                startActivity(new Intent(SplashActivity.this, AdminMainMenuActivity.class));
+                startActivity(new Intent(SplashActivity.this, LoginActivity.class));
                 finish();
             }
 
