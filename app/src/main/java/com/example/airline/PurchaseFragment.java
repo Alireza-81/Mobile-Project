@@ -23,6 +23,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class PurchaseFragment extends Fragment {
+    private Users users = Users.getInstance();
+    private User logged_in = users.getLoggedInUser();
     private Spinner originSpinner;
     private Spinner dateSpinner;
     private Spinner destinationSpinner;
@@ -227,6 +229,7 @@ public class PurchaseFragment extends Fragment {
                 purchaseButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        logged_in.addFlight(flight);
                         Toast.makeText(getContext(), "Purchase for flight ID: " + flight.getId(), Toast.LENGTH_SHORT).show();
                     }
                 });
