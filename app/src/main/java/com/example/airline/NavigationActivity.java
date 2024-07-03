@@ -1,14 +1,11 @@
 package com.example.airline;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager2.widget.ViewPager2;
 
-import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayoutMediator;
-
-// MainActivity.java
 public class NavigationActivity extends AppCompatActivity {
 
     @Override
@@ -16,26 +13,34 @@ public class NavigationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.navigation_layout);
 
-        ViewPager2 viewPager = findViewById(R.id.viewPager);
-        TabLayout tabLayout = findViewById(R.id.tabLayout);
+        // Set default fragment
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PurchaseFragment()).commit();
+        }
 
-        ViewPagerAdapter adapter = new ViewPagerAdapter(this);
-        viewPager.setAdapter(adapter);
+        Button btnPurchase = findViewById(R.id.btn_purchase);
+        Button btnPurchasedTickets = findViewById(R.id.btn_purchased_tickets);
+        Button btnProfile = findViewById(R.id.btn_profile);
 
-        // Link the TabLayout and the ViewPager2
-        new TabLayoutMediator(tabLayout, viewPager,
-                (tab, position) -> {
-                    switch (position) {
-                        case 0:
-                            tab.setText("Tab 1");
-                            break;
-                        case 1:
-                            tab.setText("Tab 2");
-                            break;
-                        case 2:
-                            tab.setText("Tab 3");
-                            break;
-                    }
-                }).attach();
+        btnPurchase.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PurchaseFragment()).commit();
+            }
+        });
+
+        btnPurchasedTickets.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PurchasedTicketsFragment()).commit();
+            }
+        });
+
+        btnProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
+            }
+        });
     }
 }

@@ -1,23 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <!-- ViewPager2 for swiping between fragments -->
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewPager"
+    <!-- FrameLayout to hold fragment content -->
+    <FrameLayout
+        android:id="@+id/fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/tabLayout" />
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
-    <!-- TabLayout at the bottom -->
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
+    <!-- LinearLayout for bottom navigation -->
+    <LinearLayout
+        android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        app:tabGravity="fill"
-        app:tabMode="fixed" />
+        android:orientation="horizontal"
+        android:backgroundTint="@color/black"
+        android:background="?android:attr/windowBackground">
 
-</RelativeLayout>
+        <Button
+            android:id="@+id/btn_purchase"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="15dp"
+            android:backgroundTint="@color/black"
+            android:textSize="10dp"
+            android:text="Purchase" />
+
+        <Button
+            android:id="@+id/btn_purchased_tickets"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="15dp"
+            android:textSize="10dp"
+            android:backgroundTint="@color/black"
+            android:text="Purchased" />
+
+        <Button
+            android:id="@+id/btn_profile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="15dp"
+            android:backgroundTint="@color/black"
+            android:textSize="10dp"
+            android:text="Profile" />
+
+    </LinearLayout>
+
+</LinearLayout>
