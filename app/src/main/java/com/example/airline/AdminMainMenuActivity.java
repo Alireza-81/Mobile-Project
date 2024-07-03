@@ -19,7 +19,6 @@ public class AdminMainMenuActivity extends AppCompatActivity {
         buttonFlightMenu = findViewById(R.id.buttonFlightMenu);
         buttonAirplaneMenu = findViewById(R.id.buttonAirplaneMenu);
         buttonStaffMenu = findViewById(R.id.buttonStaffMenu);
-        buttonCustomerMenu = findViewById(R.id.buttonCustomerMenu);
 
         buttonFlightMenu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,12 +44,6 @@ public class AdminMainMenuActivity extends AppCompatActivity {
             }
         });
 
-        buttonCustomerMenu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Add your intent here for Customer Menu
-                // Example: startActivity(new Intent(MainMenuActivity.this, CustomerMenuActivity.class));
-            }
-        });
+
     }
 }
