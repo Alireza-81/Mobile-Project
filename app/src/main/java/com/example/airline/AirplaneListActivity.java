@@ -93,7 +93,7 @@ public class AirplaneListActivity extends AppCompatActivity {
         AirplaneDAO airplaneDAO = AirplaneDAO.getInstance(this);
         airplaneList = airplaneDAO.getAllAirplanes();
 
-        airplaneAdapter = new AirplaneAdapter(airplaneList);
+        airplaneAdapter = new AirplaneAdapter(airplaneList, this);
         recyclerViewAirplanes.setAdapter(airplaneAdapter);
         recyclerViewAirplanes.setLayoutManager(new LinearLayoutManager(this));
     }

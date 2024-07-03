@@ -39,10 +39,13 @@ public class AddAirplaneActivity extends AppCompatActivity {
                 if (!nameId.isEmpty() && !model.isEmpty() && capacity > 0 && maxLuggageWeight > 0) {
                     Airplane airplane = new Airplane(nameId, model, capacity, maxLuggageWeight);
                     AirplaneDAO airplaneDAO = AirplaneDAO.getInstance(AddAirplaneActivity.this);
-                    airplaneDAO.insertAirplane(airplane);
-
-                    Toast.makeText(AddAirplaneActivity.this, "Airplane added successfully", Toast.LENGTH_SHORT).show();
-
+                    long res = airplaneDAO.insertAirplane(airplane);
+                    if (res == -1){
+                        Toast.makeText(AddAirplaneActivity.this,
+                                OperationCode.AIRPLANE_NAME_REPEATED.getValue(), Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(AddAirplaneActivity.this, "Airplane added successfully", Toast.LENGTH_SHORT).show();
+                    }
                     Intent intent = new Intent(AddAirplaneActivity.this, AirplaneListActivity.class);
                     startActivity(intent);
                     finish();

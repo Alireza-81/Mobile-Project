@@ -74,7 +74,11 @@ public class FlightDAO {
         cursor.close();
         return flights;
     }
-
+    public int deleteFlightsByAirplaneName(String airplaneName) {
+        return database.delete(FlightDatabaseHelper.TABLE_FLIGHTS,
+                FlightDatabaseHelper.COLUMN_AIRPLANE_NAME_ID + " = ?",
+                new String[]{airplaneName});
+    }
     private Flight cursorToFlight(Cursor cursor) {
         Type listType = new TypeToken<List<String>>() {}.getType();
 
@@ -186,7 +190,7 @@ public class FlightDAO {
     }
 
     // Helper method to get a flight by ID
-    private Flight getFlightById(int flightId) {
+    public Flight getFlightById(int flightId) {
         Cursor cursor = database.query(FlightDatabaseHelper.TABLE_FLIGHTS,
                 null, FlightDatabaseHelper.COLUMN_ID + " = ?", new String[]{String.valueOf(flightId)}, null, null, null);
 
@@ -250,6 +254,41 @@ public class FlightDAO {
         Gson gson = new Gson();
         Type listType = new TypeToken<List<String>>(){}.getType();
         return gson.fromJson(json, listType);
+    }
+    public int deleteFlightById(int flightId) {
+        return database.delete(FlightDatabaseHelper.TABLE_FLIGHTS,
+                FlightDatabaseHelper.COLUMN_ID + " = ?",
+                new String[]{String.valueOf(flightId)});
+    }
+    public int updateFlight(Flight flight) {
+        ContentValues values = new ContentValues();
+        values.put(FlightDatabaseHelper.COLUMN_ORIGIN, flight.getOrigin().toString());
+        values.put(FlightDatabaseHelper.COLUMN_DESTINATION, flight.getDestination().toString());
+        values.put(FlightDatabaseHelper.COLUMN_DATETIME, flight.getDateTime().toString());
+        values.put(FlightDatabaseHelper.COLUMN_AIRPLANE_NAME_ID, flight.getAirplaneNameId());
+        values.put(FlightDatabaseHelper.COLUMN_REMAINING_CAPACITY, flight.getRemainingCapacity());
+        values.put(FlightDatabaseHelper.COLUMN_PRICE, flight.getPrice());
+        values.put(FlightDatabaseHelper.COLUMN_STAFF_LIST, gson.toJson(flight.getStaffList()));
+        values.put(FlightDatabaseHelper.COLUMN_CUSTOMER_LIST, gson.toJson(flight.getCustomerList()));
+
+        return database.update(FlightDatabaseHelper.TABLE_FLIGHTS, values,
+                FlightDatabaseHelper.COLUMN_ID + " = ?", new String[]{flight.getId()});
+    }
+
+    public int updateFlightWithId(Flight flight) {
+        ContentValues values = new ContentValues();
+        values.put(FlightDatabaseHelper.COLUMN_ID, flight.getId());
+        values.put(FlightDatabaseHelper.COLUMN_ORIGIN, flight.getOrigin().toString());
+        values.put(FlightDatabaseHelper.COLUMN_DESTINATION, flight.getDestination().toString());
+        values.put(FlightDatabaseHelper.COLUMN_DATETIME, flight.getDateTime().toString());
+        values.put(FlightDatabaseHelper.COLUMN_AIRPLANE_NAME_ID, flight.getAirplaneNameId());
+        values.put(FlightDatabaseHelper.COLUMN_REMAINING_CAPACITY, flight.getRemainingCapacity());
+        values.put(FlightDatabaseHelper.COLUMN_PRICE, flight.getPrice());
+        values.put(FlightDatabaseHelper.COLUMN_STAFF_LIST, gson.toJson(flight.getStaffList()));
+        values.put(FlightDatabaseHelper.COLUMN_CUSTOMER_LIST, gson.toJson(flight.getCustomerList()));
+
+        return database.update(FlightDatabaseHelper.TABLE_FLIGHTS, values,
+                FlightDatabaseHelper.COLUMN_ID + " = ?", new String[]{flight.getId()});
     }
 
 }

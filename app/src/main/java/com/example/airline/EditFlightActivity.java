@@ -1,5 +1,6 @@
 package com.example.airline;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -8,42 +9,47 @@ import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+
 
 public class EditFlightActivity extends AppCompatActivity {
 
     private Spinner spinnerOrigin, spinnerDestination;
-    private EditText editTextDateTime, editTextAirplaneName, editTextFlightNumber;
-    private EditText StaffToAddEditText, StaffToRemoveEditText, CustomerToAddEditText, CustomerToRemoveEditText;
+    private EditText editTextDateTime, editTextAirplaneName;
+
     private Button buttonSaveChanges;
     private TextView shownPrice;
     private SeekBar chosenPrice;
     private TextView textViewCapacityValue;
     private Button buttonDecreaseCapacity, buttonIncreaseCapacity;
 
-    public static int flightID;
+    public int flightID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_flight);
+        flightID =  getIntent().getIntExtra("flightID", -1);
 
-        flightID = getIntent().getIntExtra("flightID", -1);
 
         spinnerOrigin = findViewById(R.id.spinnerOrigin);
         spinnerDestination = findViewById(R.id.spinnerDestination);
         editTextDateTime = findViewById(R.id.editTextDateTime);
         editTextAirplaneName = findViewById(R.id.editTextAirplaneName);
-        editTextFlightNumber = findViewById(R.id.editTextFlightNumber);
-        StaffToAddEditText = findViewById(R.id.editTextStaffToAdd);
-        StaffToRemoveEditText = findViewById(R.id.editTextStaffToRemove);
-        CustomerToAddEditText = findViewById(R.id.editTextCustomersToAdd);
-        CustomerToRemoveEditText = findViewById(R.id.editTextCustomersToRemove);
 
         shownPrice = findViewById(R.id.textViewPriceValue);
         chosenPrice = findViewById(R.id.seekBarPrice);
+
+
+//        Toast.makeText(this, String.valueOf(flightID), Toast.LENGTH_SHORT).show();
+
         chosenPrice.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -95,24 +101,66 @@ public class EditFlightActivity extends AppCompatActivity {
         spinnerOrigin.setAdapter(adapter);
         spinnerDestination.setAdapter(adapter);
 
-        // Load existing flight data (this would normally be done with real data)
+        // Load existing flight data
         loadFlightData();
     }
 
     private void loadFlightData() {
-        // Example data loading - in a real app, this would be dynamic data loading
-        spinnerOrigin.setSelection(0); // Select the first item in the spinner
-        spinnerDestination.setSelection(1); // Select the second item in the spinner
-        editTextDateTime.setText(LocalDateTime.now().toString());
-        editTextAirplaneName.setText("Boeing 737");
-        editTextFlightNumber.setText("1234");
-        shownPrice.setText("5000");
-        chosenPrice.setProgress(5000);
-        textViewCapacityValue.setText("150");
+        FlightDAO flightDAO = FlightDAO.getInstance(this);
+        flightDAO.open();
+//        Toast.makeText(this, String.valueOf(flightID), Toast.LENGTH_SHORT).show();
+        Flight flight = flightDAO.getFlightById(flightID);
+        flightDAO.close();
+
+        if (flight != null) {
+            // Populate UI with flight data
+            spinnerOrigin.setSelection(flight.getOrigin().ordinal());  // Set the correct item in the spinner
+            spinnerDestination.setSelection(flight.getDestination().ordinal());  // Set the correct item in the spinner
+            editTextDateTime.setText(flight.getDateTime().toString());
+            editTextAirplaneName.setText(flight.getAirplaneNameId());
+            shownPrice.setText(String.valueOf(flight.getPrice()));
+            chosenPrice.setProgress(flight.getPrice());
+            textViewCapacityValue.setText(String.valueOf(flight.getRemainingCapacity()));
+        } else {
+            Toast.makeText(this, "Flight not found", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void saveFlightChanges() {
-        // Handle the saving of flight changes
-        // This would typically involve validation and saving to a database or API
+        // Validate and retrieve updated flight data
+        String origin = spinnerOrigin.getSelectedItem().toString();
+        String destination = spinnerDestination.getSelectedItem().toString();
+        String dateTime = editTextDateTime.getText().toString();
+        String airplaneName = editTextAirplaneName.getText().toString();
+        int price = chosenPrice.getProgress();
+        int capacity = Integer.parseInt(textViewCapacityValue.getText().toString());
+
+        // Convert data to Flight object
+        Flight updatedFlight = new Flight(
+                CityEnum.valueOf(origin),
+                CityEnum.valueOf(destination),
+                LocalDateTime.parse(dateTime),
+                airplaneName,
+                new ArrayList<>(),  // Assume staff and customer lists are updated separately
+                new ArrayList<>(),
+                capacity,
+                price
+        );
+        updatedFlight.setId(String.valueOf(flightID));
+
+        // Save changes to database
+        FlightDAO flightDAO = FlightDAO.getInstance(this);
+        flightDAO.open();
+        flightDAO.updateFlightWithId(updatedFlight);
+        flightDAO.close();
+
+        // Notify user of success
+        Toast.makeText(this, "Flight details updated successfully", Toast.LENGTH_SHORT).show();
+
+        // Set result and finish the activity
+        Intent resultIntent = new Intent();
+        setResult(RESULT_OK, resultIntent);
+        finish();
     }
 }
+

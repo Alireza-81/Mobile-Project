@@ -142,21 +142,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Flight Number"
-                android:textSize="16sp"
-                android:paddingTop="8dp"
-                android:fontFamily="sans-serif-medium" />
-
-            <EditText
-                android:id="@+id/editTextFlightNumber"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:fontFamily="sans-serif" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:text="Staff to Add"
                 android:textSize="16sp"
                 android:paddingTop="8dp"
@@ -169,20 +154,7 @@
                 android:hint="Search Staff to Add"
                 android:fontFamily="sans-serif" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Staff to Remove"
-                android:textSize="16sp"
-                android:paddingTop="8dp"
-                android:fontFamily="sans-serif-medium" />
 
-            <EditText
-                android:id="@+id/editTextStaffToRemove"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Search Staff to Remove"
-                android:fontFamily="sans-serif" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -199,20 +171,6 @@
                 android:hint="Search Customers to Add"
                 android:fontFamily="sans-serif" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Customers to Remove"
-                android:textSize="16sp"
-                android:paddingTop="8dp"
-                android:fontFamily="sans-serif-medium" />
-
-            <EditText
-                android:id="@+id/editTextCustomersToRemove"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Search Customers to Remove"
-                android:fontFamily="sans-serif" />
         </LinearLayout>
     </ScrollView>
 
